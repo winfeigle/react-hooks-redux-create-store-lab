@@ -1,7 +1,17 @@
 // Note: createStore and candyReducer must be exported for the tests to run
 
-export function createStore() {
-  // write your createStore code here
+export function createStore(reducer) {
+  let state;
+
+  function dispatch(action){
+    state = reducer(state, action)
+  }
+
+  function getState(){
+    return state;
+  }
+
+  return { dispatch, getState };
 }
 
 export function candyReducer(state = [], action) {
